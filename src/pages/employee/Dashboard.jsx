@@ -15,12 +15,11 @@ import {
   Paper
 } from "@mui/material";
 
-import {
-  Assignment,
-  PendingActions,
-  CheckCircle,
-  ErrorOutline
-} from "@mui/icons-material";
+import ErrorOutlineIcon from "@mui/icons-material/ErrorOutlined";
+import PeopleIcon from "@mui/icons-material/People";
+import ConfirmationNumberIcon from "@mui/icons-material/ConfirmationNumber";
+import CheckCircleIcon from "@mui/icons-material/CheckCircle";
+import PendingActionsIcon from "@mui/icons-material/PendingActions";
 
 
 const Dashboard = () => {
@@ -35,17 +34,17 @@ const Dashboard = () => {
     {
       title: "Open Tickets",
       count: 15,
-      icon: <ErrorOutline fontSize="large" />
+      icon: <ErrorOutlineIcon fontSize="large" />
     },
     {
       title: "In Progress",
       count: 20,
-      icon: <PendingActions fontSize="large" />
+      icon: <PendingActionsIcon fontSize="large" />
     },
     {
       title: "Resolved",
       count: 10,
-      icon: <CheckCircle fontSize="large" />
+      icon: <CheckCircleIcon fontSize="large" />
     }
   ];
 
