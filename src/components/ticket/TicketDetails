@@ -1,0 +1,164 @@
+import React from "react";
+import {
+  Box,
+  Card,
+  CardContent,
+  Divider,
+  Grid,
+  Typography,
+  Chip,
+} from "@mui/material";
+
+import StatusChip from "./StatusChip";
+
+const TicketDetails = ({ ticket }) => {
+  if (!ticket) {
+    return (
+      <Typography align="center">
+        Ticket not found.
+      </Typography>
+    );
+  }
+
+  const getPriorityColor = (priority) => {
+    switch (priority) {
+      case "Critical":
+        return "error";
+      case "High":
+        return "warning";
+      case "Medium":
+        return "primary";
+      case "Low":
+        return "success";
+      default:
+        return "default";
+    }
+  };
+
+  return (
+    <Card elevation={3}>
+      <CardContent>
+        <Typography variant="h5" fontWeight="bold" gutterBottom>
+          Ticket Details
+        </Typography>
+
+        <Divider sx={{ mb: 3 }} />
+
+        <Grid container spacing={3}>
+          <Grid item xs={12} md={6}>
+            <Typography fontWeight="bold">
+              Ticket ID
+            </Typography>
+            <Typography>{ticket._id}</Typography>
+          </Grid>
+
+          <Grid item xs={12} md={6}>
+            <Typography fontWeight="bold">
+              Title
+            </Typography>
+            <Typography>{ticket.title}</Typography>
+          </Grid>
+
+          <Grid item xs={12}>
+            <Typography fontWeight="bold">
+              Description
+            </Typography>
+            <Typography>
+              {ticket.description}
+            </Typography>
+          </Grid>
+
+          <Grid item xs={12} md={6}>
+            <Typography fontWeight="bold">
+              Category
+            </Typography>
+            <Typography>{ticket.category}</Typography>
+          </Grid>
+
+          <Grid item xs={12} md={6}>
+            <Typography fontWeight="bold">
+              Priority
+            </Typography>
+
+            <Chip
+              label={ticket.priority}
+              color={getPriorityColor(ticket.priority)}
+              size="small"
+            />
+          </Grid>
+
+          <Grid item xs={12} md={6}>
+            <Typography fontWeight="bold">
+              Status
+            </Typography>
+
+            <StatusChip status={ticket.status} />
+          </Grid>
+
+          <Grid item xs={12} md={6}>
+            <Typography fontWeight="bold">
+              Created By
+            </Typography>
+            <Typography>
+              {ticket.createdBy?.name || "N/A"}
+            </Typography>
+          </Grid>
+
+          <Grid item xs={12} md={6}>
+            <Typography fontWeight="bold">
+              Assigned To
+            </Typography>
+            <Typography>
+              {ticket.assignedTo?.name || "Not Assigned"}
+            </Typography>
+          </Grid>
+
+          <Grid item xs={12} md={6}>
+            <Typography fontWeight="bold">
+              Created At
+            </Typography>
+            <Typography>
+              {ticket.createdAt
+                ? new Date(ticket.createdAt).toLocaleString()
+                : "-"}
+            </Typography>
+          </Grid>
+
+          <Grid item xs={12} md={6}>
+            <Typography fontWeight="bold">
+              Updated At
+            </Typography>
+            <Typography>
+              {ticket.updatedAt
+                ? new Date(ticket.updatedAt).toLocaleString()
+                : "-"}
+            </Typography>
+          </Grid>
+
+          {ticket.remarks && (
+            <Grid item xs={12}>
+              <Typography fontWeight="bold">
+                Remarks
+              </Typography>
+
+              <Box
+                sx={{
+                  mt: 1,
+                  p: 2,
+                  bgcolor: "grey.100",
+                  borderRadius: 1,
+                }}
+              >
+                <Typography>
+                  {ticket.remarks}
+                </Typography>
+              </Box>
+            </Grid>
+          )}
+        </Grid>
+      </CardContent>
+    </Card>
+  );
+};
+
+export default TicketDetails;

@@ -9,7 +9,7 @@ import {
 import ConfirmationNumberIcon from "@mui/icons-material/ConfirmationNumber";
 import PendingActionsIcon from "@mui/icons-material/PendingActions";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
-import ErrorOutlineIcon from "@mui/icons-material/ErrorOutline";
+import ErrorIcon from "@mui/icons-material/Error";
 
 import Loader from "../../components/common/Loader";
 import { getDashboardStats } from "../../services/dashboardService";
@@ -72,7 +72,7 @@ const Dashboard = () => {
     {
       title: "Rejected",
       value: stats.rejectedTickets,
-      icon: <ErrorOutlineIcon fontSize="large" color="error" />,
+      icon: <ErrorIcon fontSize="large" color="error" />,
     },
   ];
 
